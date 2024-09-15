@@ -4,7 +4,6 @@ import com.micros.items.models.Item;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class TestService implements CommandLineRunner {
-    private final ItemService itemService;
+    private final ItemServiceFeignImpl itemService;
     @Override
     public void run(String... args) throws Exception {
         log.info("Hello from TestService");

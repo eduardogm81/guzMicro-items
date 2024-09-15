@@ -3,6 +3,7 @@ package com.micros.items.controllers;
 import com.micros.items.models.Item;
 import com.micros.items.services.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/items")
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class ItemController {
 
     private final ItemService itemService;
+
+    public ItemController(@Qualifier("itemServiceWebClient")ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @GetMapping
     public List<Item> list() {
